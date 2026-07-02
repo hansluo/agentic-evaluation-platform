@@ -8,6 +8,7 @@ import { PeoplePage } from './pages/PeoplePage';
 import { AgentConsolePage } from './pages/AgentConsolePage';
 import { AnalyticsPage } from './pages/AnalyticsPage';
 import { PlaceholderPage } from './pages/PlaceholderPage';
+import { AuditPage } from './pages/AuditPage';
 import { mockCurrentUser } from './data/mockData';
 
 const breadcrumbMap: Record<string, string[]> = {
@@ -57,7 +58,7 @@ function AppShell() {
             } />
             <Route path="/agents" element={<AgentConsolePage />} />
             <Route path="/audit" element={
-              <PlaceholderPage title="Audit 审计中心" description="完整操作日志、版本历史对比、申诉材料导出。即将上线。" />
+              <AuditPage />
             } />
           </Routes>
         </main>

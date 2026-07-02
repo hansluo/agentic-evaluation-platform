@@ -1,4 +1,4 @@
-import { User, EvalEvent, EvidenceItem, EvaluationCandidate, AgentOpLog, RankingPool, PromotionEvent, PerformanceRating } from '../types';
+import { User, EvalEvent, EvidenceItem, EvaluationCandidate, AgentOpLog, RankingPool, PromotionEvent, PerformanceRating, EvaluationScenario, Cycle, FinalJudgmentCard, AuditLog } from '../types';
 
 export const mockCurrentUser: User = {
   id: 'u001',
@@ -9,6 +9,7 @@ export const mockCurrentUser: User = {
   position: '技术总监',
   level: 'T11',
   role: 'manager',
+  permissionLevel: 'confirmer',
 };
 
 export const mockTeamMembers: EvaluationCandidate[] = [
@@ -272,3 +273,156 @@ export const matrixQuadrants = {
   needsReview: inQuadrant(false, true),   // 低证据高评价：需复核
   needsConfirm: inQuadrant(false, false), // 低证据低评价：需确认
 };
+
+// ============================================================
+// AEP v2 新增实体 Mock 数据
+// ============================================================
+
+// 评估场景（治理引擎）
+export const mockScenarios: EvaluationScenario[] = [
+  {
+    scenario_id: 'sc1',
+    scenario_type: 'cycle_performance',
+    governance_level: 'high',
+    result_usage: 'compensation',
+    allowed_evaluator_roles: ['manager', 'hr'],
+    required_confirmers: [
+      { role: 'manager', level: 'L' },
+      { role: 'indirect_manager', level: 'indirect' },
+      { role: 'hr', level: 'hr' },
+    ],
+    rule_set_id: 'rs1',
+    audit_level: 'enhanced',
+    enable_agent_ops: true,
+    enable_risk_check: true,
+    enable_quota: true,
+    enable_l_chain: true,
+    enable_appeal: true,
+    status: 'active',
+  },
+  {
+    scenario_id: 'sc2',
+    scenario_type: 'offcycle_review',
+    governance_level: 'low',
+    result_usage: 'reference',
+    allowed_evaluator_roles: ['manager', 'non_l_evaluator'],
+    required_confirmers: [{ role: 'manager', level: 'L' }],
+    rule_set_id: 'rs2',
+    audit_level: 'basic',
+    enable_agent_ops: true,
+    enable_risk_check: true,
+    enable_quota: false,
+    enable_l_chain: false,
+    enable_appeal: false,
+    status: 'active',
+  },
+  {
+    scenario_id: 'sc3',
+    scenario_type: 'offcycle_promotion',
+    governance_level: 'medium',
+    result_usage: 'promotion',
+    allowed_evaluator_roles: ['manager', 'hr'],
+    required_confirmers: [
+      { role: 'manager', level: 'L' },
+      { role: 'hr', level: 'hr' },
+    ],
+    rule_set_id: 'rs3',
+    audit_level: 'full',
+    enable_agent_ops: true,
+    enable_risk_check: true,
+    enable_quota: true,
+    enable_l_chain: true,
+    enable_appeal: true,
+    status: 'active',
+  },
+];
+
+// 评估周期
+export const mockCycles: Cycle[] = [
+  {
+    cycle_id: 'c1',
+    cycle_type: 'H1',
+    governance_level: 'high',
+    start_date: '2026-01-01',
+    end_date: '2026-06-30',
+    slice_date: '2026-06-30',
+    scenario_ids: ['sc1'],
+    status: 'active',
+  },
+];
+
+// 正式确认卡（已确认的示例）
+export const mockFinalJudgmentCards: FinalJudgmentCard[] = [
+  {
+    card_id: 'fjc1',
+    employee_id: 'e006',
+    evaluation_object_id: 'eo006',
+    final_rating: 'good',
+    talent_tier: '4',
+    nine_box: { x: 2, y: 2 },
+    rank_position: 10,
+    confirmer_id: 'u001',
+    confirmer_name: '李明',
+    confirmed_at: '2026-06-21T13:00:00Z',
+    evidence_links: ['ei1', 'ei2', 'ei5'],
+    key_basis: '本期稳定完成核心模块开发，code review 通过率 96%，团队协作积极',
+    ai_suggestion: 'Good',
+    human_modification: '无修改，采纳 AI 建议',
+    ai_human_diff: '一致',
+    calibrated: false,
+    result_usage: 'formal',
+    dispute_status: 'none',
+    audit_entry_id: 'al001',
+    immutable: true,
+    version: 1,
+  },
+];
+
+// 审计日志
+export const mockAuditLogs: AuditLog[] = [
+  {
+    audit_id: 'al001',
+    timestamp: '2026-06-21T13:00:00Z',
+    operator_id: 'u001',
+    operator_name: '李明',
+    operator_type: 'human',
+    operation_type: 'confirm',
+    target_object: 'e006',
+    target_type: 'EvaluationResultFinal',
+    before_value: 'Manager Confirmed',
+    after_value: 'Final Confirmed',
+    source: 'web',
+    sensitive_data_accessed: true,
+    sensitive_data_types: ['talent_tier'],
+    immutable: true,
+  },
+  {
+    audit_id: 'al002',
+    timestamp: '2026-06-25T10:30:00Z',
+    operator_id: 'u001',
+    operator_name: '李明',
+    operator_type: 'agent',
+    operation_type: 'update',
+    target_object: 'e001',
+    target_type: 'EvaluationResultCandidate',
+    before_value: 'Good+',
+    after_value: 'Outstanding',
+    source: 'agent',
+    sensitive_data_accessed: false,
+    immutable: true,
+  },
+  {
+    audit_id: 'al003',
+    timestamp: '2026-06-22T11:30:00Z',
+    operator_id: 'u001',
+    operator_name: '李明',
+    operator_type: 'human',
+    operation_type: 'access_sensitive',
+    target_object: 'e005',
+    target_type: 'TalentTierResult',
+    source: 'web',
+    sensitive_data_accessed: true,
+    sensitive_data_types: ['talent_tier', 'negative_evaluation'],
+    immutable: true,
+  },
+];

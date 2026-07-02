@@ -25,9 +25,9 @@ const navItems: NavItem[] = [
   { path: '/promotion', icon: TrendingUp, label: '晋级', labelEn: 'Promotion', badge: 1 },
   { path: '/cycle', icon: RefreshCw, label: '周期确认', labelEn: 'Cycle' },
   { path: '/analytics', icon: PieChart, label: '校验分析', labelEn: 'Analytics' },
-  { path: '/rules', icon: Settings, label: '规则配置', labelEn: 'Rules', roles: ['hr', 'admin'] },
-  { path: '/agents', icon: Bot, label: 'Agent 配置', labelEn: 'Agents', roles: ['admin'] },
-  { path: '/audit', icon: Shield, label: '审计', labelEn: 'Audit', roles: ['hr', 'admin'] },
+  { path: '/rules', icon: Settings, label: '规则配置', labelEn: 'Rules' },
+  { path: '/agents', icon: Bot, label: 'Agent 配置', labelEn: 'Agents' },
+  { path: '/audit', icon: Shield, label: '审计', labelEn: 'Audit' },
 ];
 
 interface SidebarProps {
@@ -38,9 +38,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
   const [collapsed, setCollapsed] = useState(false);
   const location = useLocation();
 
-  const visibleItems = navItems.filter(item =>
-    !item.roles || item.roles.includes(userRole) || userRole === 'admin'
-  );
+  // AEP v2 §1.3 原则：弱化层级区隔，所有菜单对所有角色可见
+  const visibleItems = navItems;
 
   return (
     <div className={clsx(
