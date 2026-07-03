@@ -344,3 +344,57 @@ export const EvidenceCard: React.FC<EvidenceCardProps> = ({
     </div>
   );
 };
+
+// ============ GapCard ============
+interface GapCardProps {
+  gapType: string;
+  impact: string;
+  suggestedAction: string;
+  className?: string;
+}
+
+export const GapCard: React.FC<GapCardProps> = ({ gapType, impact, suggestedAction, className }) => {
+  return (
+    <div className={clsx('border border-amber-200 bg-amber-50/40 rounded-xl p-4 space-y-2', className)}>
+      <div className="flex items-center gap-2">
+        <AlertCircle className="w-4 h-4 text-amber-600" />
+        <span className="text-sm font-medium text-amber-800">{gapType}</span>
+      </div>
+      <div className="flex gap-2">
+        <span className="text-xs font-semibold text-slate-400 w-12 flex-shrink-0 pt-0.5">影响</span>
+        <p className="text-xs text-slate-600">{impact}</p>
+      </div>
+      <div className="flex gap-2">
+        <span className="text-xs font-semibold text-amber-500 w-12 flex-shrink-0 pt-0.5">建议</span>
+        <p className="text-xs text-amber-700">{suggestedAction}</p>
+      </div>
+    </div>
+  );
+};
+
+// ============ AgentActionButton ============
+interface AgentActionButtonProps {
+  icon: React.ElementType;
+  label: string;
+  level: 'L1' | 'L2' | 'L3';
+  onClick?: () => void;
+}
+
+const agentLevelConfig = {
+  L1: 'bg-green-50 text-green-700 border-green-200',
+  L2: 'bg-yellow-50 text-yellow-700 border-yellow-200',
+  L3: 'bg-orange-50 text-orange-700 border-orange-200',
+};
+
+export const AgentActionButton: React.FC<AgentActionButtonProps> = ({ icon: Icon, label, level, onClick }) => {
+  return (
+    <button
+      onClick={onClick}
+      className="flex items-center gap-2 px-3 py-2.5 bg-white border border-slate-200 rounded-xl text-sm text-slate-700 hover:border-ai-200 hover:bg-ai-50/30 transition-all text-left group"
+    >
+      <Icon className="w-3.5 h-3.5 text-slate-400 group-hover:text-ai-500 flex-shrink-0" />
+      <span className="flex-1 text-xs">{label}</span>
+      <span className={clsx('badge border text-xs flex-shrink-0', agentLevelConfig[level])}>{level}</span>
+    </button>
+  );
+};

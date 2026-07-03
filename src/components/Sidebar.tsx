@@ -3,7 +3,7 @@ import { NavLink, useLocation } from 'react-router-dom';
 import {
   Radar, Users, CalendarCheck, BarChart3, TrendingUp,
   RefreshCw, PieChart, Settings, Bot, Shield,
-  ChevronLeft, ChevronRight, Zap
+  ChevronLeft, ChevronRight, Zap, GitCompare
 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { UserRole } from '../types';
@@ -25,6 +25,7 @@ const navItems: NavItem[] = [
   { path: '/promotion', icon: TrendingUp, label: '晋级', labelEn: 'Promotion', badge: 1 },
   { path: '/cycle', icon: RefreshCw, label: '周期确认', labelEn: 'Cycle' },
   { path: '/analytics', icon: PieChart, label: '校验分析', labelEn: 'Analytics' },
+  { path: '/calibration', icon: GitCompare, label: '团队校准', labelEn: 'Calibration' },
   { path: '/rules', icon: Settings, label: '规则配置', labelEn: 'Rules' },
   { path: '/agents', icon: Bot, label: 'Agent 配置', labelEn: 'Agents' },
   { path: '/audit', icon: Shield, label: '审计', labelEn: 'Audit' },
