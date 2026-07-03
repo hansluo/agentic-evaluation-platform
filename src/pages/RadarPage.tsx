@@ -194,7 +194,7 @@ export const RadarPage: React.FC = () => {
                   <Bot className="w-4 h-4 text-ai-500" />
                   <span className="text-sm font-semibold text-slate-700">Agent 最近操作</span>
                 </div>
-                <button className="text-xs text-primary-600 hover:text-primary-700">查看全部</button>
+                <button className="text-xs text-space-gray hover:text-space-gray">查看全部</button>
               </div>
               <div className="divide-y divide-slate-50">
                 {mockAgentLogs.map(log => (

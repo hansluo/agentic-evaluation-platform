@@ -114,7 +114,7 @@ export const PeoplePage: React.FC = () => {
                     key={event.id}
                     className={clsx(
                       'bg-white rounded-lg border cursor-pointer transition-all duration-200',
-                      isExpanded ? 'border-primary-200 shadow-sm' : 'border-slate-200 hover:border-slate-300'
+                      isExpanded ? 'border-secondary-fixed shadow-sm' : 'border-slate-200 hover:border-slate-300'
                     )}
                     onClick={() => setExpandedEvent(isExpanded ? null : event.id)}
                   >
@@ -146,7 +146,7 @@ export const PeoplePage: React.FC = () => {
                           </div>
                         )}
                         {!event.isIncludedInCycle && (
-                          <button className="mt-2 w-full py-1 text-xs text-primary-600 border border-primary-200 rounded-md hover:bg-primary-50 transition-colors">
+                          <button className="mt-2 w-full py-1 text-xs text-space-gray border border-secondary-fixed rounded-md hover:bg-secondary-fixed transition-colors">
                             纳入周期评价
                           </button>
                         )}
@@ -233,7 +233,7 @@ export const PeoplePage: React.FC = () => {
                             </span>
                           </div>
                           <div className="text-xs text-slate-500 mt-0.5">{c.impact}</div>
-                          <button className="flex items-center gap-1 mt-1 text-xs text-primary-600 hover:text-primary-700">
+                          <button className="flex items-center gap-1 mt-1 text-xs text-space-gray hover:text-space-gray">
                             <ExternalLink className="w-3 h-3" />{c.evidenceRef}
                           </button>
                         </div>

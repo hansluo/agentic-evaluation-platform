@@ -52,7 +52,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
         'flex items-center gap-2.5 px-4 h-14 border-b border-slate-100',
         collapsed && 'justify-center px-0'
       )}>
-        <div className="w-7 h-7 bg-gradient-to-br from-primary-500 to-ai-500 rounded-lg flex items-center justify-center flex-shrink-0">
+        <div className="w-7 h-7 bg-gradient-to-br from-secondary-fixed0 to-tertiary-container rounded-lg flex items-center justify-center flex-shrink-0">
           <Zap className="w-4 h-4 text-white" />
         </div>
         {!collapsed && (
@@ -77,12 +77,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
                 'flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all duration-150 group relative',
                 collapsed ? 'justify-center' : '',
                 isActive
-                  ? 'bg-primary-50 text-primary-700 font-medium'
+                  ? 'bg-secondary-fixed text-space-gray font-medium'
                   : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700'
               )}
               title={collapsed ? item.label : undefined}
             >
-              <Icon className={clsx('w-4 h-4 flex-shrink-0', isActive ? 'text-primary-600' : '')} />
+              <Icon className={clsx('w-4 h-4 flex-shrink-0', isActive ? 'text-space-gray' : '')} />
               {!collapsed && (
                 <>
                   <span className="flex-1 truncate">{item.label}</span>
@@ -116,7 +116,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ userRole }) => {
       {/* Bottom: Version */}
       {!collapsed && (
         <div className="px-4 py-3 border-t border-slate-100">
-          <div className="text-xs text-slate-400">V1.0 · 2026 H1</div>
+          <div className="text-xs text-slate-400">V2.0 · Calm Intelligence</div>
         </div>
       )}
     </div>

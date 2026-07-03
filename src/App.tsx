@@ -36,7 +36,7 @@ function AppShell() {
   const breadcrumb = breadcrumbMap[base] || ['页面'];
 
   return (
-    <div className="flex h-screen overflow-hidden bg-slate-50">
+    <div className="flex h-screen overflow-hidden" style={{ background: '#f9f9fb' }}>
       <Sidebar userRole={mockCurrentUser.role} />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <TopBar user={mockCurrentUser} breadcrumb={breadcrumb} />

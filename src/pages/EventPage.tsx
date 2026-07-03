@@ -51,7 +51,7 @@ export const EventPage: React.FC = () => {
                 className={clsx(
                   'flex items-center gap-2 px-3 py-2 rounded-lg border text-xs whitespace-nowrap transition-all',
                   selectedEvent.id === event.id
-                    ? 'border-primary-200 bg-primary-50 text-primary-700'
+                    ? 'border-secondary-fixed bg-secondary-fixed text-space-gray'
                     : 'border-slate-200 bg-white text-slate-500 hover:border-slate-300'
                 )}
               >
@@ -65,8 +65,8 @@ export const EventPage: React.FC = () => {
         {/* 1. Event Overview */}
         <div className="card p-5">
           <div className="flex items-start gap-4">
-            <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center flex-shrink-0">
-              <Icon className="w-6 h-6 text-primary-600" />
+            <div className="w-12 h-12 bg-secondary-fixed rounded-xl flex items-center justify-center flex-shrink-0">
+              <Icon className="w-6 h-6 text-space-gray" />
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2">
@@ -96,7 +96,7 @@ export const EventPage: React.FC = () => {
               <Users className="w-4 h-4 text-slate-500" />
               <span className="text-sm font-semibold text-slate-700">贡献地图</span>
             </div>
-            <button className="text-xs text-primary-600 hover:text-primary-700 font-medium">
+            <button className="text-xs text-space-gray hover:text-space-gray font-medium">
               <Plus className="w-3 h-3 inline" />添加参与者
             </button>
           </div>

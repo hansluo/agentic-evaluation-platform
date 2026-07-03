@@ -41,7 +41,7 @@ export const AuditPage: React.FC = () => {
           <div className="flex items-center gap-2">
             <button
               onClick={() => setShowFJC(!showFJC)}
-              className={clsx('btn-secondary text-xs', showFJC && 'bg-primary-50 border-primary-200')}
+              className={clsx('btn-secondary text-xs', showFJC && 'bg-secondary-fixed border-secondary-fixed')}
             >
               <FileText className="w-3.5 h-3.5" />
               {showFJC ? '查看操作日志' : '查看正式确认卡'}

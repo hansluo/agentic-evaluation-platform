@@ -1,53 +1,127 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       colors: {
-        // Primary - Slate/Indigo
-        primary: {
-          50: '#eef2ff',
-          100: '#e0e7ff',
-          500: '#6366f1',
-          600: '#4f46e5',
-          700: '#4338ca',
-          900: '#1e1b4b',
-        },
-        // AI Accent - Soft Violet/Purple
+        // Calm Intelligence — Surface system
+        surface: '#f9f9fb',
+        'surface-dim': '#d9dadc',
+        'surface-bright': '#f9f9fb',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#f3f3f5',
+        'surface-container': '#eeeef0',
+        'surface-container-high': '#e8e8ea',
+        'surface-container-highest': '#e2e2e4',
+        'on-surface': '#1a1c1d',
+        'on-surface-variant': '#46464a',
+        'inverse-surface': '#2f3132',
+        'inverse-on-surface': '#f0f0f2',
+        'outline-ci': '#77767b',
+        'outline-variant': '#c7c6ca',
+        'surface-tint': '#5f5e60',
+        background: '#f9f9fb',
+        'on-background': '#1a1c1d',
+        'surface-variant-ci': '#e2e2e4',
+
+        // Primary — near-black
+        primary: '#030304',
+        'on-primary': '#ffffff',
+        'primary-container': '#1d1d1f',
+        'on-primary-container': '#868587',
+        'inverse-primary': '#c8c6c8',
+
+        // Secondary — Indigo (AI accent)
+        secondary: '#4e45d5',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#6860ef',
+        'on-secondary-container': '#fffbff',
+
+        // Tertiary — Deep violet
+        tertiary: '#040018',
+        'on-tertiary': '#ffffff',
+        'tertiary-container': '#230062',
+        'on-tertiary-container': '#8f73e0',
+
+        // Error
+        error: '#ba1a1a',
+        'on-error': '#ffffff',
+        'error-container': '#ffdad6',
+        'on-error-container': '#93000a',
+
+        // Fixed colors
+        'primary-fixed': '#e4e2e4',
+        'primary-fixed-dim': '#c8c6c8',
+        'on-primary-fixed': '#1b1b1d',
+        'on-primary-fixed-variant': '#474649',
+        'secondary-fixed': '#e3dfff',
+        'secondary-fixed-dim': '#c3c0ff',
+        'on-secondary-fixed': '#100069',
+        'on-secondary-fixed-variant': '#372abf',
+        'tertiary-fixed': '#e8ddff',
+        'tertiary-fixed-dim': '#cebdff',
+        'on-tertiary-fixed': '#21005e',
+        'on-tertiary-fixed-variant': '#4f319c',
+
+        // Brand-specific
+        'space-gray': '#1D1D1F',
+        'indigo-depth': '#4338CA',
+        'soft-violet': '#C4B5FD',
+
+        // Glassmorphism
+        'glass-white': 'rgba(255, 255, 255, 0.7)',
+        'hairline-border': 'rgba(0, 0, 0, 0.08)',
+
+        // Status
+        'status-success': '#10B981',
+        'status-error': '#EF4444',
+        'status-warning': '#F59E0B',
+
+        // Legacy compatibility (mapped to new system)
         ai: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
+          50: '#e3dfff',
+          100: '#e8ddff',
+          200: '#cebdff',
+          400: '#8f73e0',
+          500: '#6860ef',
+          600: '#4e45d5',
+          700: '#372abf',
         },
-        // Slate for text
         slate: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
+          50: '#f9f9fb',
+          100: '#f3f3f5',
+          200: '#e2e2e4',
+          300: '#c7c6ca',
+          400: '#77767b',
+          500: '#5f5e60',
+          600: '#46464a',
+          700: '#2f3132',
+          800: '#1a1c1d',
+          900: '#030304',
         },
-        // Status colors
-        risk: {
-          high: '#ef4444',
-          medium: '#f97316',
-          low: '#eab308',
-          none: '#22c55e',
-        }
       },
       fontFamily: {
-        sans: ['-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        mono: ['"Courier Prime"', 'monospace'],
+      },
+      fontSize: {
+        'display': ['64px', { lineHeight: '72px', fontWeight: '700', letterSpacing: '-0.02em' }],
+        'headline-lg': ['32px', { lineHeight: '40px', fontWeight: '600', letterSpacing: '-0.01em' }],
+        'headline-md': ['24px', { lineHeight: '32px', fontWeight: '600' }],
+        'body-lg': ['18px', { lineHeight: '28px', fontWeight: '400' }],
+        'body-md': ['16px', { lineHeight: '24px', fontWeight: '400' }],
+        'label-sm': ['12px', { lineHeight: '16px', fontWeight: '600', letterSpacing: '0.05em' }],
+      },
+      borderRadius: {
+        sm: '0.25rem',
+        DEFAULT: '0.5rem',
+        md: '0.75rem',
+        lg: '1rem',
+        xl: '1.5rem',
+        full: '9999px',
+      },
+      maxWidth: {
+        'container-max': '1440px',
       },
       animation: {
         'fade-in': 'fadeIn 0.2s ease-in-out',

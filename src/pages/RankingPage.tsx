@@ -45,11 +45,11 @@ export const RankingPage: React.FC = () => {
               className={clsx(
                 'flex flex-col px-3 py-2 rounded-lg border text-xs whitespace-nowrap transition-all',
                 selectedPool.id === pool.id
-                  ? 'border-primary-200 bg-primary-50'
+                  ? 'border-secondary-fixed bg-secondary-fixed'
                   : 'border-slate-200 bg-white hover:border-slate-300'
               )}
             >
-              <span className={clsx('font-medium', selectedPool.id === pool.id ? 'text-primary-700' : 'text-slate-600')}>{pool.name}</span>
+              <span className={clsx('font-medium', selectedPool.id === pool.id ? 'text-space-gray' : 'text-slate-600')}>{pool.name}</span>
               <span className="text-slate-400 mt-0.5">{pool.scope} · {pool.status}</span>
             </button>
           ))}
@@ -81,7 +81,7 @@ export const RankingPage: React.FC = () => {
               <button className="text-xs text-ai-600 hover:text-ai-700 font-medium flex items-center gap-1">
                 <Bot className="w-3.5 h-3.5" />AI 排序
               </button>
-              <button className="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+              <button className="text-xs text-space-gray hover:text-space-gray font-medium flex items-center gap-1">
                 <Zap className="w-3.5 h-3.5" />映射绩效候选
               </button>
             </div>
@@ -97,7 +97,7 @@ export const RankingPage: React.FC = () => {
                     <GripVertical className="w-3.5 h-3.5 text-slate-300 cursor-grab" />
                   </div>
                   <div className="w-7 text-center flex-shrink-0">
-                    <span className={clsx('text-sm font-bold', idx < 3 ? 'text-primary-600' : 'text-slate-400')}>{idx + 1}</span>
+                    <span className={clsx('text-sm font-bold', idx < 3 ? 'text-space-gray' : 'text-slate-400')}>{idx + 1}</span>
                   </div>
                   <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
                     <span className="text-xs font-semibold text-indigo-700">{member.employeeName[0]}</span>

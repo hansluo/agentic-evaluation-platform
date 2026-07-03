@@ -154,7 +154,7 @@ export const CalibrationPage: React.FC = () => {
           <div className="text-sm font-semibold text-slate-700 mb-3">校准动作</div>
           <div className="grid grid-cols-2 gap-2">
             {[
-              { label: '查看个人证据', icon: CheckCircle, color: 'text-primary-600' },
+              { label: '查看个人证据', icon: CheckCircle, color: 'text-space-gray' },
               { label: '调整候选结果', icon: AlertCircle, color: 'text-orange-600' },
               { label: '标记校准原因', icon: AlertTriangle, color: 'text-yellow-600' },
               { label: '发起讨论', icon: Users, color: 'text-purple-600' },

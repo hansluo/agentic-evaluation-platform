@@ -66,7 +66,7 @@ export const AnalyticsPage: React.FC = () => {
                   </div>
                   <p className="text-xs text-slate-500">{issue.detail}</p>
                 </div>
-                <button className="text-xs text-primary-600 hover:text-primary-700 font-medium">处理</button>
+                <button className="text-xs text-space-gray hover:text-space-gray font-medium">处理</button>
               </div>
             ))}
           </div>
